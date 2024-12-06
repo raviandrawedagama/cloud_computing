@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Group 05</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Consistent header style */
+    header {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background-color: #870000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 1.9em;
+      font-weight: 700;
+      margin-left: 20px;
+      flex-grow: 1;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      padding: 8px 15px;
+      color: #d3d3d3;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      font-size: 1em;
+      transition: color 0.3s ease;
+      background-color: #797979;
+      border-radius: 5px;
+      border: 2px solid #f5f5f5;
+    }
+
+    nav ul li a:hover {
+      background-color: #f5f5f5;
+      color: #797979;
+    }
+
+    .hero {
+      background-color: #830000;
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+      margin-top: 80px;
+    }
+
+    .hero h2 {
+      font-size: 2.2em;
+      margin-bottom: 10px;
+    }
+
+    .about-content {
+      margin-top: 20px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .profile-cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+      background-color: #830000;
+      margin-top: 100px; /* Adds space to clear the header */
+    }
+
+    .profile-card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      width: 300px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .profile-card:hover {
+      transform: translateY(-10px);
+    }
+
+    /* Smaller, square profile images */
+    .profile-img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="home_page.html" class="btn btn-white btn-animated">Home</a></li>
+        <li><a href="about_page.html" class="about-link">About Us</a></li>
+        <li><a href="login.html" class="logout-link">Logout</a></li>
+      </ul>
+    </nav>
+    <h1>About Us - Group 05</h1>
+  </header>
+
+  <section class="profile-cards">
+    <div id="profile-cards-container" class="profile-cards"></div>
+  </section>
+
+  <footer>
+    <p>Group 05 - Raviandra & Reyhand</p>
+  </footer>
+
+  <script>
+    function loadProfile() {
+      fetch('profile.json') 
+        .then(response => response.json()) 
+        .then(data => {
+          const container = document.getElementById('profile-cards-container');
+          container.innerHTML = ''; 
+
+          data.forEach(profile => {
+            const profileCard = `
+              <div class="profile-card">
+                <img src="${profile.image}" alt="Profile picture of ${profile.name}" class="profile-img">
+                <div class="profile-details">
+                  <p><strong>Name:</strong> ${profile.name}</p>
+                  <p><strong>Student ID:</strong> ${profile.studentId}</p>
+                  <p><strong>Email:</strong> ${profile.email}</p>
+                  <p><strong>Instagram:</strong> <a href="${profile.instagramLink}" target="_blank">${profile.instagram}</a></p>
+                </div>
+              </div>
+            `;
+
+            container.innerHTML += profileCard;
+          });
+        })
+        .catch(error => console.error('Error loading profile:', error)); 
+    }
+
+    window.onload = loadProfile;
+  </script>
+</body>
+</html>

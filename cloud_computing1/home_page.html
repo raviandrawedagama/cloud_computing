@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Computings - Group 05</title>
+    <link rel="stylesheet" href="homestyle.css">
+    <style>
+        /* Align the navigation menu to the left */
+        header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: #870000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 1.9em;
+            font-weight: 700;
+            margin-left: 20px;
+            flex-grow: 1; /* Pushes navigation to the left */
+        }
+
+        /* Style for the navigation menu */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            padding: 8px 15px;
+            color: #bdbaba;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size: 1em;
+            transition: color 0.3s ease;
+            background-color: #ffffff;
+            border-radius: 5px;
+            border: 2px solid #f5f5f5;
+        }
+
+        nav ul li a:hover {
+            background-color: #f5f5f5;
+            color: #797979;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home_page.html" class="btn btn-white btn-animated">Home</a></li>
+                <li><a href="about_page.html" class="about-link">About Us</a></li>
+                <li><a href="login.html" class="logout-link">Logout</a></li> 
+            </ul>
+        </nav>
+        <h1>Group 05 - Cloud Computing Project</h1>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-text">
+            <h2>Welcome!</h2>
+        </div>
+    </section>
+
+    <section class="introduction">
+        <h2>About the Project</h2>
+    </section>
+
+    <section class="team">
+        <h2>Meet the Team</h2>
+        <p>Explore more about us on the <a href="about_page.html">About Us</a> page.</p>
+    </section>
+
+    <footer>
+        <p>Group 05 - Raviandra & Reyhand</p>
+    </footer>
+</body>
+</html>

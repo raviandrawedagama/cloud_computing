@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Dashboard Login</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        *,
+        *:before,
+        *:after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #590202;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .login-container {
+            padding: 50px 35px;
+            background-color: rgba(255, 255, 255, 0.13);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+            text-align: center;
+            width: 400px;
+            z-index: 1;
+        }
+        .login-container h2 {
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 42px;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        label {
+            display: block;
+            margin-top: 30px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #ffffff;
+        }
+        input {
+            display: block;
+            height: 50px;
+            width: 100%;
+            background-color: rgba(195, 14, 14, 0.435);
+            border-radius: 3px;
+            padding: 0 10px;
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 300;
+            color: #ffffff;
+        }
+        ::placeholder {
+            color: #adadad;
+        }
+        button {
+            margin-top: 50px;
+            width: 100%;
+            background-color: #ffffff;
+            color: #080710;
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #login-error {
+            color: rgb(198, 253, 0);
+            display: none;
+            margin-top: 20px;
+        }
+
+        .password-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            cursor: pointer;
+            color: #e5e5e5;
+            font-size: 18px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required placeholder="Enter your username">
+
+            <label for="password">Password:</label>
+            <div class="password-container">
+                <input type="password" id="password" name="password" required placeholder="Enter your password">
+                <span class="password-toggle" onclick="togglePasswordVisibility()">👁️</span>
+            </div>
+            <label for="Registration">Registration:</label>
+            <input type="text" id="Registration" name="Registration" required placeholder="Registration">
+            <button type="submit">Login</button>
+            <p id="login-error">Invalid Login Information</p>
+        </form>
+    </div>
+
+    <script>
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById("password");
+            const passwordToggle = document.querySelector(".password-toggle");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                passwordToggle.textContent = "💀"; 
+            } else {
+                passwordInput.type = "password";
+                passwordToggle.textContent = "🔐"; 
+            }
+        }
+
+        document.getElementById("login-form").addEventListener("submit", function(event) {
+            event.preventDefault();  // prevent reload
+            const usernameInput = document.getElementById("username").value;
+            const passwordInput = document.getElementById("password").value;
+            const RegistrationInput = document.getElementById("Registration").value;
+            // fetching JSON file
+            fetch("up.json")
+                .then(response => response.json())
+                .then(data => {
+                    // validating username dan password
+                    const user = data.find(user => user.username === usernameInput && user.password === passwordInput && user.Registration === RegistrationInput);
+
+                    if (user) {
+                        alert("Login successful!");
+                        window.location.href = "home_page.html";  // Redirect to dashboard
+                    } else {
+                        document.getElementById("login-error").style.display = "block";  // error message
+                    }
+                })
+                .catch(error => console.error("Error loading JSON:", error));
+        });
+    </script>
+</body>
+</html>

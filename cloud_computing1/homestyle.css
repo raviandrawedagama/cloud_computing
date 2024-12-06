@@ -1,0 +1,138 @@
+body {
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between; /* Space between title and navigation */
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #830000;
+    box-shadow: 0 4px 8px rgba(206, 0, 0, 0.69);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    flex-wrap: wrap;
+}
+
+header h1 {
+    font-size: 1.9em;
+    font-weight: 700;
+    margin-left: 300px; /* Push the "HOME PAGE" title to the right */
+    text-align: center;
+    flex-grow: 1;
+    color: #d3d3d3; /* Changed white text to light grey */
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px; /* Space between navigation items */
+    margin-left: auto; /* Keep navigation on the right */
+    margin-right: 40px; /* Move navigation slightly to the left */
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #c2b8b8; 
+    font-family: 'Poppins', sans-serif; 
+    font-weight: 400;
+    font-size: 1em;
+    transition: color 0.3s ease;
+    outline: none; 
+    padding: 8px 15px; /* Adds padding to each link */
+}
+
+header nav ul li a:hover {
+    color: #797979; 
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header nav ul {
+        justify-content: center;
+        margin-left: 0;
+    }
+}
+
+.about-link {
+    padding: 8px 15px; 
+    border: none; /* Removed border */
+    color: #d3d3d3; 
+    text-decoration: none; 
+    font-family: 'Poppins', sans-serif; 
+    font-weight: 400;
+    transition: color 0.3s ease; 
+}
+
+.about-link:hover {
+    color: #797979;
+    outline: none; 
+}
+
+.hero {
+    background-image: url("image/background_homepage.jpeg");
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    text-align: center;
+    padding: 100px;
+}
+
+.hero-text {
+    color: #d3d3d3; /* Changed white text to light grey */
+}
+
+.hero-text h2 {
+    font-size: 40px;
+    margin: 5em 0;
+}
+
+.hero-text p {
+    margin-bottom: 20px;
+}
+
+.hero-text .btn {
+    padding: 10px 20px;
+    background-color: #ff5500;
+    color: #d3d3d3; /* Changed white text on button to light grey */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #1B2735;
+    font-size: 1em;
+    line-height: 1.5;
+    color: #d3d3d3; /* Changed white text in footer to light grey */
+}
+
+footer p {
+    margin: 0;
+}
+
+header nav ul li .logout-link {
+    padding: 8px 15px; 
+    border: none; 
+    border-radius: 5px; 
+    color: #d3d3d3; 
+    text-decoration: none; 
+    font-family: 'Poppins', sans-serif; 
+    font-weight: 400;
+    transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+header nav ul li .logout-link:hover { 
+    color: #d3d3d3; /* Shows light grey on hover */
+    background-color: #797979; /* Add grey background on hover */
+}
